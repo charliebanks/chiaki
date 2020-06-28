@@ -25,6 +25,11 @@
 
 #include <QSettings>
 
+enum class RendererType {
+	OpenGL32Core,
+	OpenGLES3
+};
+
 enum class ControllerButtonExt
 {
 	// must not overlap with ChiakiControllerButton and ChiakiControllerAnalogButton
@@ -107,6 +112,9 @@ class Settings : public QObject
 		bool GetManualHostExists(int id)							{ return manual_hosts.contains(id); }
 		ManualHost GetManualHost(int id) const						{ return manual_hosts[id]; }
 
+		RendererType GetRendererType() const;
+		void SetRendererType(RendererType type);
+		
 		static QString GetChiakiControllerButtonName(int);
 		void SetControllerButtonMapping(int, Qt::Key);
 		QMap<int, Qt::Key> GetControllerMapping();

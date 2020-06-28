@@ -72,6 +72,8 @@ void StreamWindow::Init(const StreamSessionConnectInfo &connect_info)
 
 	resize(connect_info.video_profile.width, connect_info.video_profile.height);
 	show();
+	// Start in full screen mode.
+	ToggleFullscreen();
 }
 
 void StreamWindow::keyPressEvent(QKeyEvent *event)

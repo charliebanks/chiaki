@@ -68,6 +68,7 @@ int real_main(int argc, char *argv[])
 	}
 
 	QApplication::setAttribute(Qt::AA_ShareOpenGLContexts);
+	QApplication::setAttribute(Qt::AA_UseOpenGLES);
 	QSurfaceFormat::setDefaultFormat(AVOpenGLWidget::CreateSurfaceFormat());
 
 	QApplication app(argc, argv);
@@ -127,7 +128,7 @@ int real_main(int argc, char *argv[])
 			printf("Given morning has invalid size (expected %llu)", (unsigned long long)sizeof(ChiakiConnectInfo::morning));
 			return 1;
 		}
-
+		
 		StreamSessionConnectInfo connect_info(&settings, host, regist_key, morning);
 
 		return RunStream(app, connect_info);
